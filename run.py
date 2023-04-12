@@ -32,7 +32,6 @@ def get_sales_data():
     return sales_data
 
 
-
 def validate_data(values):
     """
     Convert all string values into integers, throws error if 
@@ -51,4 +50,16 @@ def validate_data(values):
     return True
 
 
+def update_sales_worksheet(data):
+    """
+    Update sales data worksheet, add new row with list data provided
+    """
+    print("Update sales worksheet...\n")
+    sales_worksheet = SHEET.worksheet("sales")
+    sales_worksheet.append_row(data)
+    print("Sales worksheet updated.\n")
+
+
 data = get_sales_data()
+sales_data = [int(num) for num in data]
+update_sales_worksheet(sales_data)
